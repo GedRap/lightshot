@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 import urllib
-from app.mod_lightshots.models import Screenshot
+from app.mod_lightshot.models import Screenshot
 
 debug = True
 
