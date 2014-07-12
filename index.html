@@ -34,6 +34,15 @@
           <p>A lightweight RESTful API for taking screenshots of web sites.
 It is simple and has a minimal feature set by design.</p>
 
+<pre><code>$ python run.py 
+$ curl 127.0.0.1:5000/generate?url=http://google.com
+
+{
+  "path": "shots/1405200668_httpgooglecom.jpg",
+  "success": true
+}
+</code></pre>
+
 <h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
@@ -45,7 +54,7 @@ It is simple and has a minimal feature set by design.</p>
 <h3>
 <a name="manual-installation" class="anchor" href="#manual-installation"><span class="octicon octicon-link"></span></a>Manual Installation</h3>
 
-<p>Required packages can be installed using pip:</p>
+<p>Dependencies  can be installed using pip:</p>
 
 <pre><code>pip install -r requirements.txt
 </code></pre>
