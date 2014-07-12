@@ -12,7 +12,7 @@ If you are using Mac, Linux or other Unix system, run ```install.sh``` which wil
 Required packages can be installed using pip:
 
 ```
-pip -r requirements.txt
+pip install -r requirements.txt
 ```
 
 Also, make sure that `shots` directory is writeable:
