@@ -4,12 +4,15 @@ import time
 import re
 
 class Screenshot:
+
   def __init__(self, url):
     self.url = url
+    self.last_used_filename = None
   
   def capture(self):
     filename = "shots/" + self.generate_filename(self.url)
     self.save_screenshot(self.url, filename)
+    self.last_used_filename = filename
     return filename
 
   def generate_filename(self, url):
