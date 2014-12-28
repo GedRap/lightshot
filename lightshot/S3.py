@@ -2,6 +2,7 @@ from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 
 import ntpath
+from urlparse import urlparse
 
 class S3:
 
@@ -22,6 +23,10 @@ class S3:
 
         if public_read:
             s3_key.set_acl('public-read')
+            full_url = s3_key.generate_url(expires_in=60)
+            # strip out access key, etc since it's public
+            parsed_url = urlparse(full_url)
+            public_url = parsed_url.scheme + "://" +  parsed_url.netloc + parsed_url.path
 
-        s3_key.set_metadata("lightshot-url", screenshot.url)
+            return public_url
 
