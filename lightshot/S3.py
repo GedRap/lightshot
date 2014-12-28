@@ -2,9 +2,9 @@ from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 
 import ntpath
-import os.path
 
 class S3:
+
     def __init__(self, access_key, secret_key, bucket):
         self.connection = S3Connection(access_key, secret_key)
         self.bucket = self.connection.get_bucket(bucket)

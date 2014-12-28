@@ -1,7 +1,10 @@
-from flask import Flask, request, jsonify
 import urllib
-from app.mod_lightshot.models import Screenshot
-from app.mod_lightshot.S3 import S3
+
+from flask import Flask, request, jsonify
+
+from lightshot.S3 import S3
+from lightshot.screenshot import Screenshot
+
 
 debug = True
 
