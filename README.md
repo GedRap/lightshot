@@ -1,12 +1,26 @@
+# Lightshot
+
 A lightweight RESTful API for taking screenshots of web sites.
-It is simple and has a minimal feature set by design.
+Screenshots can be stored locally or uploaded to AWS S3.
+
+Usage example:
 
 ```
-$ python run.py 
 $ curl 127.0.0.1:5000/generate?url=http://google.com
 
 {
   "path": "shots/1405200668_httpgooglecom.jpg",
+  "success": true
+}
+```
+
+With uploading to S3 enabled:
+
+```
+$ curl 127.0.0.1:5000/generate?url=http://google.com
+
+{
+  "s3_url": "https://lightshot.s3.amazonaws.com/1419887713_httpgooglecom.jpg",
   "success": true
 }
 ```
@@ -22,18 +36,14 @@ If you are using Mac, Linux or other Unix system, run ```install.sh``` which wil
 Dependencies  can be installed using pip:
 
 ```
-pip install -r requirements.txt
+pip install --pre -r requirements.txt
 ```
 
-Also, make sure that `shots` directory is writeable:
+Also, make sure that `shots` directory is writeable, and logging directory exists and is writable.
 
-```
-chmod u+x shots/
-```
+## Configuration
 
-## Roadmap
+The value of an environment variable `LIGHTSHOT_SETTINGS` should be the path to the configuration file. Running
+`run.sh` will do that for you.
 
-For v1.0, the following features are planned:
-
-* Saving to Amazon S3
-* Documentation
+An example configuration file is included in config/default.config.
