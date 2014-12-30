@@ -1,19 +1,12 @@
 import urllib
 import traceback
 
-from flask import Flask, request, jsonify
+from flask import request, jsonify
 
-from lightshot.S3 import S3
-from lightshot.screenshot import Screenshot
-from lightshot.LoggerFactory import LoggerFactory
+from lightshot import app
+from lightshot.models.S3 import S3
+from lightshot.models.screenshot import Screenshot
 
-
-debug = True
-
-app = Flask(__name__)
-app.config.from_envvar('LIGHTSHOT_SETTINGS')
-logger = LoggerFactory(app.config['LS_LOG_PATH'])
-app.logger.addHandler(logger.create_rotating_file_handler())
 
 @app.route("/generate")
 def generate():
@@ -44,6 +37,3 @@ def generate():
             raise e
 
         return jsonify({'success': False})
-
-if __name__ == "__main__":
-    app.run(debug=True)
