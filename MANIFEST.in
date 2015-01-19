@@ -1,4 +1,0 @@
-include *.md
-include *.sh
-include *.txt
-recursive-include config *.config
