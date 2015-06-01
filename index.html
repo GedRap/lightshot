@@ -1,41 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <title>Lightshot by GedRap</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>Lightshot by GedRap</title>
   </head>
-
   <body>
-    <div id="container">
-      <div class="inner">
+    <div class="wrapper">
+      <header>
+        <h1>Lightshot</h1>
+        <p>A lightweight RESTful API for taking screenshots of web sites.</p>
 
-        <header>
-          <h1>Lightshot</h1>
-          <h2>A lightweight RESTful API for taking screenshots of web sites.</h2>
-        </header>
+        <p class="view"><a href="https://github.com/GedRap/lightshot">View the Project on GitHub <small>GedRap/lightshot</small></a></p>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/GedRap/lightshot/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/GedRap/lightshot/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/GedRap/lightshot" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
 
-        <hr>
+        <ul>
+          <li><a href="https://github.com/GedRap/lightshot/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/GedRap/lightshot/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/GedRap/lightshot">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="lightshot" class="anchor" href="#lightshot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lightshot</h1>
 
-        <section id="main_content">
-          <p>A lightweight RESTful API for taking screenshots of web sites.
-It is simple and has a minimal feature set by design.</p>
+<p>A lightweight RESTful API for taking screenshots of web sites.
+Screenshots can be stored locally or uploaded to AWS S3.</p>
 
-<pre><code>$ python run.py 
-$ curl 127.0.0.1:5000/generate?url=http://google.com
+<p>Usage example:</p>
+
+<pre><code>$ curl 127.0.0.1:5000/generate?url=http://google.com
 
 {
   "path": "shots/1405200668_httpgooglecom.jpg",
@@ -43,45 +44,48 @@ $ curl 127.0.0.1:5000/generate?url=http://google.com
 }
 </code></pre>
 
+<p>With uploading to S3 enabled:</p>
+
+<pre><code>$ curl 127.0.0.1:5000/generate?url=http://google.com
+
+{
+  "s3_url": "https://lightshot.s3.amazonaws.com/1419887713_httpgooglecom.jpg",
+  "success": true
+}
+</code></pre>
+
 <h2>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <h3>
-<a name="automated-installation" class="anchor" href="#automated-installation"><span class="octicon octicon-link"></span></a>Automated Installation</h3>
+<a id="automated-installation" class="anchor" href="#automated-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Automated Installation</h3>
 
 <p>If you are using Mac, Linux or other Unix system, run <code>install.sh</code> which will complete the steps described bellow.</p>
 
 <h3>
-<a name="manual-installation" class="anchor" href="#manual-installation"><span class="octicon octicon-link"></span></a>Manual Installation</h3>
+<a id="manual-installation" class="anchor" href="#manual-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Manual Installation</h3>
 
 <p>Dependencies  can be installed using pip:</p>
 
-<pre><code>pip install -r requirements.txt
+<pre><code>pip install --pre -r requirements.txt
 </code></pre>
 
-<p>Also, make sure that <code>shots</code> directory is writeable:</p>
-
-<pre><code>chmod u+x shots/
-</code></pre>
+<p>Also, make sure that <code>shots</code> directory is writeable, and logging directory exists and is writable.</p>
 
 <h2>
-<a name="roadmap" class="anchor" href="#roadmap"><span class="octicon octicon-link"></span></a>Roadmap</h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
 
-<p>For v1.0, the following features are planned:</p>
+<p>The value of an environment variable <code>LIGHTSHOT_SETTINGS</code> should be the path to the configuration file. Running
+<code>run.sh</code> will do that for you.</p>
 
-<ul>
-<li>Saving to Amazon S3</li>
-<li>Documentation</li>
-</ul>
-        </section>
-
-        <footer>
-          Lightshot is maintained by <a href="https://github.com/GedRap">GedRap</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
-      </div>
+<p>An example configuration file is included in config/default.config.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/GedRap">GedRap</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
   </body>
 </html>
